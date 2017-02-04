@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
 
+/*global require module document*/
+
 require('file?name=[name].[ext]!./index.html');
 
 const render = (Component) => {
