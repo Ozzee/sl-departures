@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DeparturesTable from './DeparturesTable';
+import Departures from '../containers/departures';
  
 class Card extends Component {
     render() {
@@ -7,7 +7,7 @@ class Card extends Component {
             <div className="card">
                 <div className="card-content">
                     <span className="card-title">Fruängen</span>
-                    <DeparturesTable />
+                    <Departures />
                 </div>
             </div>
         );

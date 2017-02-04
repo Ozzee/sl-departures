@@ -12,24 +12,24 @@ class DeparturesTable extends Component {
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>14</td>
-                            <td>Mörby Centrum</td>
-                            <td>11:30</td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>Mörby Centrum</td>
-                            <td>11:40</td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>Mörby Centrum</td>
-                            <td>11:50</td>
-                        </tr>
+                        { this.props.departures.map(departure => 
+                            <tr key={departure.time+departure.line+departure.destination}>
+                              <td>{departure.line}</td>
+                              <td>{departure.destination}</td>
+                              <td>{departure.time}</td>
+                            </tr> )}
                     </tbody>
                 </table>);
     }
+}
+
+DeparturesTable.propTypes = {
+  departures: React.PropTypes.arrayOf(React.PropTypes.shape(
+    {
+      line: React.PropTypes.string, 
+      destination: React.PropTypes.string,
+      time: React.PropTypes.string
+    }))
 }
 
 export default DeparturesTable;
