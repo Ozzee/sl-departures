@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const testReducer = (state, action) => {
+const testReducer = () => {
     return {
       stops: {
         fruangen: {

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { updateStop } from '../actions'
 import DeparturesTable from '../components/DeparturesTable'
 
 const mapStateToProps = (state) => {
