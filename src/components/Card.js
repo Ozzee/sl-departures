@@ -7,7 +7,7 @@ class Card extends Component {
             <div className="card">
                 <div className="card-content">
                     <span className="card-title">Fruängen</span>
-                    <Departures />
+                    <Departures stopId="9260" />
                 </div>
             </div>
     )

@@ -1,36 +1,31 @@
 import { combineReducers } from 'redux'
-import moment from 'moment'
+import { RECEIVE_STOP_DATA } from '../actions'
 
-const testReducer = () => {
-  return {
-    stops: {
-      fruangen: {
-        name: 'Fruängen',
-        id: '1234',
-        departures: [
-          {
-            line: '14',
-            destination: 'Mörby Centrum',
-            time: moment().add(1, 'minutes').seconds(0).format()
-          },
-          {
-            line: '14',
-            destination: 'Mörby Centrum',
-            time: moment().add(6, 'minutes').seconds(0).format()
-          },
-          {
-            line: '14',
-            destination: 'Mörby Centrum',
-            time: moment().add(11, 'minutes').seconds(0).format()
-          }
-        ]
-      }
+const cardsReducer = () => {
+  return {cards: [{name: 'Fruängen', id: '9260', updating: false, error: false}]}
+}
+
+const stopsReducer = (state, action) => {
+  switch (action.type) {
+  case RECEIVE_STOP_DATA:
+    var s = {}
+    s[action.stop] = action.data.departures
+    return Object.assign({}, state, {
+      stops: s
+    })
+    
+  default:
+    if (state == undefined) {
+      return {stops: {}}
+    } else {
+      return state
     }
   }
 }
 
 const departuresApp = combineReducers({
-  testReducer
+  cardsReducer,
+  stopsReducer
 })
 
 export default departuresApp

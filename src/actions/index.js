@@ -1,15 +1,39 @@
+import fetch from 'isomorphic-fetch'
 
-// Add a SL public transit stop
-export const addStop = (stop) => {
+/* Add a SL public transit stop
+export const ADD_STOP = 'ADD_STOP'
+function addStop(stop) {
   return {
-    type: 'ADD_STOP',
+    type: ADD_STOP,
+    stop
+  }
+}
+*/
+
+export const START_UPDATING_STOP = 'START_UPDATING_STOP'
+function startUpdatingStop(stop) {
+  return {
+    type: START_UPDATING_STOP,
     stop
   }
 }
 
-export const updateStop = (stop) => {
+export const RECEIVE_STOP_DATA = 'RECEIVE_STOP_DATA'
+function receiveStopData(stop, data) {
   return {
-    type: 'UPDATE_STOP',
-    stop
+    type: RECEIVE_STOP_DATA,
+    stop,
+    data
+  }
+}
+
+
+export function fetchStop(stop) {
+  return function(dispatch) {
+    dispatch(startUpdatingStop(stop))
+
+    return fetch('http://localhost:3000/stop/9260')
+      .then(response => response.json())
+      .then(json => dispatch(receiveStopData(stop, json)))
   }
 }

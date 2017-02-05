@@ -1,17 +1,18 @@
 import { connect } from 'react-redux'
 import DeparturesTable from '../components/DeparturesTable'
-import { updateStop } from '../actions'
+import { fetchStop } from '../actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const deps = state.stopsReducer.stops[ownProps.stopId]
   return {
-    departures: state.testReducer.stops.fruangen.departures
+    departures: deps || []
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    updateDepartures: (id) => {
-      dispatch(updateStop(id))
+    updateDepartures: () => {
+      dispatch(fetchStop(ownProps.stopId))
     }
   }
 }

@@ -48,7 +48,7 @@ class DeparturesTable extends Component {
                             <tr key={departure.time+departure.line+departure.destination}>
                               <td>{departure.line}</td>
                               <td>{departure.destination}</td>
-                              <td className={this.departing(departure.time)}>{moment(departure.time).format('HH:mm')}</td>
+                              <td>{departure.time}</td>
                             </tr> )}
                     </tbody>
                 </table>)
