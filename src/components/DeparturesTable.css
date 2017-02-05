@@ -1,8 +1,12 @@
-td.departing {
+.departing {
     animation-iteration-count: infinite;
     animation-duration: 1s;
     animation-name: blink;
     animation-direction: alternate;
+}
+
+.departed {
+    color: #d4d4d4;
 }
 
 @keyframes blink {
