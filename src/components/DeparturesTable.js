@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import moment from 'moment';
-import styles from './DeparturesTable.css';
+import React, { Component } from 'react'
+import moment from 'moment'
+import styles from './DeparturesTable.css'
 
 /*global setInterval clearInterval*/
 
@@ -8,28 +8,28 @@ import styles from './DeparturesTable.css';
 class DeparturesTable extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = {currentTime: moment()};
+    super(props)
+    this.state = {currentTime: moment()}
   }
 
   componentDidMount() {
-    this.timer = setInterval(() => this.setState({currentTime: moment()}), 1000);
+    this.timer = setInterval(() => this.setState({currentTime: moment()}), 1000)
 
-    this.props.updateDepartures('1234');
+    this.props.updateDepartures('1234')
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearInterval(this.timer)
   }
 
   departing(timeString) {
-    const diff = moment(timeString).diff(moment());
+    const diff = moment(timeString).diff(moment())
     if (diff < 0) {
-      return styles.departed;
+      return styles.departed
     } else if (diff < 60*1000) {
-      return styles.departing;
+      return styles.departing
     } else {
-      return '';
+      return ''
     }
   }
 
@@ -51,7 +51,7 @@ class DeparturesTable extends Component {
                               <td className={this.departing(departure.time)}>{moment(departure.time).format('HH:mm')}</td>
                             </tr> )}
                     </tbody>
-                </table>);
+                </table>)
   }
 }
 
@@ -65,4 +65,4 @@ DeparturesTable.propTypes = {
   updateDepartures: React.PropTypes.func
 }
 
-export default DeparturesTable;
+export default DeparturesTable

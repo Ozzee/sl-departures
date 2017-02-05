@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import DeparturesTable from '../components/DeparturesTable'
-import { updateStop } from '../actions';
+import { updateStop } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
     departures: state.testReducer.stops.fruangen.departures
-  };
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Departures from '../containers/departures';
+import React, { Component } from 'react'
+import Departures from '../containers/departures'
  
 class Card extends Component {
   render() {
@@ -10,8 +10,8 @@ class Card extends Component {
                     <Departures />
                 </div>
             </div>
-    );
+    )
   }
 }
 
-export default Card;
+export default Card

@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import moment from 'moment';
+import { combineReducers } from 'redux'
+import moment from 'moment'
 
 const testReducer = () => {
   return {
@@ -26,11 +26,11 @@ const testReducer = () => {
         ]
       }
     }
-  };
-};
+  }
+}
 
 const departuresApp = combineReducers({
   testReducer
-});
+})
 
-export default departuresApp;
+export default departuresApp
