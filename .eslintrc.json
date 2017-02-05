@@ -9,9 +9,12 @@
     ],
     "parser": "babel-eslint",
     "parserOptions": {
-    "ecmaFeatures": {
-        "ecmaVersion": 6,
-        "jsx": true
+        "ecmaFeatures": {
+            "ecmaVersion": 6,
+            "jsx": true
+        }
+    },
+    "rules": {
+        "indent": ["error", 2]
     }
-  }
 }
