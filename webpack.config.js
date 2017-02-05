@@ -40,7 +40,6 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader?modules',
-          'postcss-loader',
         ],
       },
     ],
