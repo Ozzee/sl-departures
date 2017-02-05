@@ -61,7 +61,8 @@ DeparturesTable.propTypes = {
       line: React.PropTypes.string, 
       destination: React.PropTypes.string,
       time: React.PropTypes.string
-    }))
+    })),
+  updateDepartures: React.PropTypes.func
 }
 
 export default DeparturesTable;
