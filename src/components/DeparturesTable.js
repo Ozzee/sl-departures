@@ -14,6 +14,8 @@ class DeparturesTable extends Component {
 
   componentDidMount() {
     this.timer = setInterval(() => this.setState({currentTime: moment()}), 1000);
+
+    this.props.updateDepartures('1234');
   }
 
   componentWillUnmount() {

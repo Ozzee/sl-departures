@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import DeparturesTable from '../components/DeparturesTable'
+import { updateStop } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -7,6 +8,14 @@ const mapStateToProps = (state) => {
   };
 }
 
-const Departures = connect(mapStateToProps)(DeparturesTable)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateDepartures: (id) => {
+      dispatch(updateStop(id))
+    }
+  }
+}
+
+const Departures = connect(mapStateToProps, mapDispatchToProps)(DeparturesTable)
 
 export default Departures
