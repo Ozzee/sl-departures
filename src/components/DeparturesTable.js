@@ -2,14 +2,37 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import styles from './DeparturesTable.css';
 
+/*global setInterval clearInterval*/
+
+
 class DeparturesTable extends Component {
 
-  departing(timeString) {
-    return moment(timeString).diff(moment()) < 60*1000 ? styles.departing : ''
+  constructor(props) {
+    super(props);
+    this.state = {currentTime: moment()};
   }
 
-    render() {
-        return (<table>
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({currentTime: moment()}), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  departing(timeString) {
+    const diff = moment(timeString).diff(moment());
+    if (diff < 0) {
+      return styles.departed;
+    } else if (diff < 60*1000) {
+      return styles.departing;
+    } else {
+      return '';
+    }
+  }
+
+  render() {
+    return (<table>
                     <thead>
                     <tr>
                         <th data-field="line">Line</th>
@@ -27,7 +50,7 @@ class DeparturesTable extends Component {
                             </tr> )}
                     </tbody>
                 </table>);
-    }
+  }
 }
 
 DeparturesTable.propTypes = {
