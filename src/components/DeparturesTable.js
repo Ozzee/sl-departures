@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import styles from './DeparturesTable.css';
 
 class DeparturesTable extends Component {
+
+  departing(timeString) {
+    return moment(timeString).diff(moment()) < 60*1000 ? styles.departing : ''
+  }
+
     render() {
         return (<table>
                     <thead>
@@ -16,7 +23,7 @@ class DeparturesTable extends Component {
                             <tr key={departure.time+departure.line+departure.destination}>
                               <td>{departure.line}</td>
                               <td>{departure.destination}</td>
-                              <td>{departure.time}</td>
+                              <td className={this.departing(departure.time)}>{moment(departure.time).format('HH:mm')}</td>
                             </tr> )}
                     </tbody>
                 </table>);

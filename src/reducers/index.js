@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import moment from 'moment';
 
 const testReducer = () => {
     return {
@@ -10,17 +11,17 @@ const testReducer = () => {
                 {
                   line: '14',
                   destination: 'Mörby Centrum',
-                  time: '11:30'
+                  time: moment().add(1, 'minutes').seconds(0).format()
                 },
                 {
                   line: '14',
                   destination: 'Mörby Centrum',
-                  time: '11:40'
+                  time: moment().add(6, 'minutes').seconds(0).format()
                 },
                 {
                   line: '14',
                   destination: 'Mörby Centrum',
-                  time: '11:50'
+                  time: moment().add(11, 'minutes').seconds(0).format()
                 }
               ]
         }

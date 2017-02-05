@@ -1,0 +1,20 @@
+td.departing {
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    0% {
+        color: #000000;
+    }
+
+    50% {
+        color: #000000;        
+    }
+
+    100% {
+        color: #d0d0d0;
+    }
+}
