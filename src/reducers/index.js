@@ -8,18 +8,12 @@ const cardsReducer = () => {
 const stopsReducer = (state, action) => {
   switch (action.type) {
   case RECEIVE_STOP_DATA:
-    var s = {}
-    s[action.stop] = action.data.departures
-    return Object.assign({}, state, {
-      stops: s
-    })
+    var s = Object.assign({}, state)
+    s.stops[action.stop] = action.data.departures
+    return s
     
   default:
-    if (state == undefined) {
-      return {stops: {}}
-    } else {
-      return state
-    }
+    return state == undefined ? {stops: {}} : state
   }
 }
 

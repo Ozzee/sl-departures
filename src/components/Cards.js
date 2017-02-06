@@ -5,7 +5,7 @@ class Cards extends Component {
   render() {
     return (<div className="row">
             <div className="col s12 m6">
-              {this.props.stops.map((stop) => <Card stop={stop} />)}
+              {this.props.stops.map((stop) => <Card key={stop.stopId} stop={stop} />)}
             </div>
       </div>)
   }
