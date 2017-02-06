@@ -6,12 +6,16 @@ class Card extends Component {
     return (
             <div className="card">
                 <div className="card-content">
-                    <span className="card-title">Fruängen</span>
-                    <Departures stopId="9260" />
+                    <span className="card-title">{this.props.stop.name}</span>
+                    <Departures stopId={this.props.stop.stopId} />
                 </div>
             </div>
     )
   }
+}
+
+Card.propTypes = {
+  stop: React.PropTypes.object
 }
 
 export default Card

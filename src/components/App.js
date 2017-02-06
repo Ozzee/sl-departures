@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './App.css'
-import Cards from './Cards'
+import Stops from '../containers/stops'
 
 const App = () => (
   <div className={styles.app}>
-    <Cards />
+    <Stops />
   </div>
 )
 
