@@ -16,8 +16,14 @@ server.route({
   method: 'GET',
   path: '/stop/{stopId}',
   handler: function (request, reply) {
-    logger.info('Requesting stop: ' + request.params.stopId)
-    fetch('http://api.sl.se/api2/realtimedeparturesV4.json?key='+apiKey+'&timewindow=60&siteid=' + request.params.stopId)
+    const stopId = parseInt(request.params.stopId)
+    if (isNaN(stopId)) {
+      logger.error('Malformed stopId: ' + request.params.stopId)
+      return reply('bad request').code(401)
+    }
+
+    logger.info('Requesting stop: ' + stopId)    
+    fetch('http://api.sl.se/api2/realtimedeparturesV4.json?key='+apiKey+'&timewindow=60&siteid=' + stopId)
         .then(response => response.json())
         .then(json => {
           if (json.StatusCode !== 0) {
