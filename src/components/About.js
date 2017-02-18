@@ -18,8 +18,8 @@ class About extends Component {
             <p>This site is not affiliated with SL in any way. It only uses the APIs available at <a href="https://www.trafiklab.se/api">trafiklab.se</a></p>
             <ul>
               <li>Developed by <a href="http://ehnstrom.fi" target="_blank">Oskar Ehnström</a></li>
-              <li>Source: <a href="https://github.com/Ozzee/sl-departures">GitHub</a></li>
-              <li>With support from the <a href="https://spiceprogram.org/" target="_blank" >Spice Program</a></li>
+              <li>Source: <a href="https://github.com/Ozzee/sl-departures" target="_blank">GitHub</a></li>
+              <li>With support from the <a href="https://spiceprogram.org/" target="_blank">Spice Program</a></li>
             </ul>
           </div>
           <div className="modal-footer">
