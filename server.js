@@ -8,7 +8,7 @@ const logger = require('bucker').createLogger()
 const Inert = require('inert')
 
 
-const apiKey = process.env.SL_KEY
+const apiKey = process.env.SL_REAL
 
 const server = new Hapi.Server()
 server.connection({ port: 3000, host: 'localhost' })
@@ -45,7 +45,7 @@ server.route({
           } else {
             logger.debug(json.ResponseData)
             const data = {departures: json.ResponseData.Metros.map((stop) => {
-              return {line: stop.LineNumber, destination: stop.Destination, time: stop.DisplayTime}
+              return {line: stop.LineNumber, destination: stop.Destination, time: stop.DisplayTime, direction: stop.JourneyDirection}
             })}
             
             return reply(data).header('Access-Control-Allow-Origin', 'http://localhost:9000')
