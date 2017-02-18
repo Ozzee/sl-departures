@@ -32,7 +32,7 @@ export function fetchStop(stop) {
   return function(dispatch) {
     dispatch(startUpdatingStop(stop))
 
-    return fetch('http://localhost:3000/stop/'+stop)
+    return fetch('/stop/'+stop)
       .then(response => response.json())
       .then(json => dispatch(receiveStopData(stop, json)))
   }
