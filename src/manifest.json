@@ -1,0 +1,13 @@
+{
+  "short_name": "Departures",
+  "name": "SL Departures",
+  "start_url": "/?utm_source=homescreen",
+  "theme_color": "#0098d0",
+  "background_color": "#fdfeff",
+  "display": "standalone",
+  "icons": [{
+    "src": "images/icon-192x192.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }]
+}

@@ -5,12 +5,26 @@
 const Hapi = require('hapi')
 const fetch = require('isomorphic-fetch')
 const logger = require('bucker').createLogger()
+const Inert = require('inert')
 
 
 const apiKey = process.env.SL_KEY
 
 const server = new Hapi.Server()
 server.connection({ port: 3000, host: 'localhost' })
+server.register(Inert, () => {})
+
+
+server.route({
+  method: 'GET',
+  path: '/{param*}',
+  handler: {
+    directory: {
+      path: 'dist',
+      listing: true
+    }
+  }
+})
 
 server.route({
   method: 'GET',

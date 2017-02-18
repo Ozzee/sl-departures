@@ -13,6 +13,7 @@ import App from './components/App'
 /*global require module document*/
 
 require('file?name=[name].[ext]!./index.html')
+require('file?name=[name].[ext]!./manifest.json')
 
 const loggerMiddleware = createLogger()
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack && rm -rf dist/images && mkdir dist/images && cp img/* dist/images/",
     "start": "webpack-dev-server",
     "pretest": "eslint /src/**/*.js"
   },
@@ -30,6 +30,7 @@
   "dependencies": {
     "bucker": "^1.1.1",
     "hapi": "^16.1.0",
+    "inert": "^4.1.0",
     "moment": "^2.17.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
