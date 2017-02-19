@@ -33,9 +33,9 @@ Requirements:
 * AWS user with access to S3 and Lambda
 
 Commands:
-1. npm run build
-2. npm run deploy-client
-3. npm run deploy-server
+* npm run build
+* npm run deploy-client
+* npm run deploy-server
 
 AWS Policy for the S3 bucket:
 ```json
