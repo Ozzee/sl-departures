@@ -7,7 +7,7 @@
     "build": "webpack -p && rm -rf dist/images && mkdir dist/images && cp img/* dist/images/",
     "start": "DEV=true webpack-dev-server",
     "deploy-client": "npm run build && aws s3 sync dist/ s3://$BUCKET",
-    "deply-server": "cd serverless && serverless deploy"
+    "deploy-server": "cd serverless && serverless deploy"
   },
   "author": "",
   "license": "ISC",
