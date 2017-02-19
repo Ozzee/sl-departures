@@ -21,6 +21,10 @@ const cardsReducer = () => {
       lines: [{
         line: '14',
         direction: 2
+      },
+      {
+        line: '14',
+        direction: 1
       }]
     }]}
 }
@@ -28,7 +32,7 @@ const cardsReducer = () => {
 /*
  * Filter new stop information and add them to the new state
  */
-const stopsReducer = (state, action) => {
+const scheduleReducer = (state, action) => {
   switch (action.type) {
   case RECEIVE_STOP_DATA:
     var newState = Object.assign({}, state)
@@ -42,7 +46,7 @@ const stopsReducer = (state, action) => {
 
 const departuresApp = combineReducers({
   cardsReducer,
-  stopsReducer
+  scheduleReducer
 })
 
 export default departuresApp

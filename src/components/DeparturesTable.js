@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import styles from './DeparturesTable.css'
+import _ from 'lodash'
 
 /*global setInterval clearInterval*/
 
@@ -33,7 +34,16 @@ class DeparturesTable extends Component {
     }
   }
 
+  departures(departures, stop) {
+    return _.flatMap(stop.lines, (l)=>{
+      return _.filter(departures, (d) => {
+        return d.line === l.line && d.direction === l.direction
+      })
+    })
+  }
+
   render() {
+    const departures = this.departures(this.props.departures, this.props.stop)
     return (<table>
                     <thead>
                     <tr>
@@ -44,7 +54,7 @@ class DeparturesTable extends Component {
                     </thead>
 
                     <tbody>
-                        { this.props.departures.map(departure => 
+                        { departures.map(departure => 
                             <tr key={departure.time+departure.line+departure.destination}>
                               <td>{departure.line}</td>
                               <td>{departure.destination}</td>
@@ -56,11 +66,13 @@ class DeparturesTable extends Component {
 }
 
 DeparturesTable.propTypes = {
+  stop: React.PropTypes.object,
   departures: React.PropTypes.arrayOf(React.PropTypes.shape(
     {
       line: React.PropTypes.string, 
       destination: React.PropTypes.string,
-      time: React.PropTypes.string
+      time: React.PropTypes.string,
+      direction: React.PropTypes.number
     })),
   updateDepartures: React.PropTypes.func
 }

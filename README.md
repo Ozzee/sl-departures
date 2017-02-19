@@ -8,8 +8,16 @@ To get any real data you need to register and apply for an API key at: https://w
 
 * Install npm dependencies
 * Start develeopment server: `npm start`
-* Start back-end: `node server.js`
-  - Note that you need to have an environment variable named SL_KEY with your API key
 
+## Environment
 
-
+* `AWS_ACCESS_KEY_ID`
+* `AWS_SECRET_ACCESS_KEY`
+* `AWS_REGION`
+  * e.g. `eu-west-1`
+* `DEV`
+  * `true` when developing, otherwise false
+* `API_ROOT`
+  * Your back end root
+* `SL_ORIGINS`
+  * `*` when developing, otherwise the URI to your site

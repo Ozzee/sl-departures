@@ -3,16 +3,17 @@ import DeparturesTable from '../components/DeparturesTable'
 import { fetchStop } from '../actions'
 
 const mapStateToProps = (state, ownProps) => {
-  const deps = state.stopsReducer.stops[ownProps.stopId]
+  const deps = state.scheduleReducer.stops[ownProps.stop.stopId]
   return {
-    departures: deps || []
+    departures: deps || [],
+    stop: ownProps.stop
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     updateDepartures: () => {
-      dispatch(fetchStop(ownProps.stopId))
+      dispatch(fetchStop(ownProps.stop.stopId))
     }
   }
 }

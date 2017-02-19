@@ -1,0 +1,11 @@
+{
+  "name": "sldepartures-serverless",
+  "version": "1.0.0",
+  "description": "Web app for displaying the next departures of a stop in the Stockholm region public transit system.",
+  "author": "Oskar Ehnstrom",
+  "license": "Apache 2",
+  "dependencies": {
+    "bucker": "^1.1.1",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}

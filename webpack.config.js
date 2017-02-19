@@ -1,13 +1,24 @@
-const { resolve } = require('path');
-const webpack = require('webpack');
+/*eslint-env node*/
+
+
+const { resolve } = require('path')
+const webpack = require('webpack')
+
+function entries() {
+  if (process.env.DEV === 'true'){
+    return [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:9000',
+      'webpack/hot/only-dev-server',
+      './index.js'
+    ]
+  } else {
+    return './index.js'
+  }
+}
 
 module.exports = {
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:9000',
-    'webpack/hot/only-dev-server',
-    './index.js'
-  ],
+  entry: entries(),
   
   output: {
     filename: 'bundle.js',
@@ -47,6 +58,10 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      DEV: process.env.DEV === 'true',
+      API_ROOT: JSON.stringify(process.env.API_ROOT)
+    })
   ],
-};
+}

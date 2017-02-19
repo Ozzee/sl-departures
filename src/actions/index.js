@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+/*global API_ROOT */
 
 /* Add a SL public transit stop
 export const ADD_STOP = 'ADD_STOP'
@@ -31,8 +32,7 @@ function receiveStopData(stop, data) {
 export function fetchStop(stop) {
   return function(dispatch) {
     dispatch(startUpdatingStop(stop))
-
-    return fetch('/stop/'+stop)
+    return fetch(API_ROOT + 'stop/' +stop)
       .then(response => response.json())
       .then(json => dispatch(receiveStopData(stop, json)))
   }

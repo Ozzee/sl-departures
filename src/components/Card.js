@@ -7,7 +7,7 @@ class Card extends Component {
             <div className="card">
                 <div className="card-content">
                     <span className="card-title">{this.props.stop.name}</span>
-                    <Departures stopId={this.props.stop.stopId} />
+                    <Departures stop={this.props.stop} />
                 </div>
             </div>
     )

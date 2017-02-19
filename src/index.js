@@ -10,14 +10,14 @@ import { createStore, applyMiddleware } from 'redux'
 import departuresApp from './reducers'
 import App from './components/App'
 
-/*global require module document*/
+/*global require module document DEV */
 
+/* Copy these files to the dist folder as is */
 require('file?name=[name].[ext]!./index.html')
 require('file?name=[name].[ext]!./manifest.json')
 
-const loggerMiddleware = createLogger()
-
-let store = createStore(departuresApp, applyMiddleware(thunkMiddleware, loggerMiddleware))
+/* Apply logger only in dev */
+let store = DEV ? createStore(departuresApp, applyMiddleware(thunkMiddleware, createLogger())) : createStore(departuresApp, applyMiddleware(thunkMiddleware))
 
 const render = (Component) => {
   ReactDOM.render(
