@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './App.css'
 import Stops from '../containers/stops'
 import About from '../components/About'
+import Clock from '../components/Clock'
 
 /*global document*/
 
@@ -18,10 +19,8 @@ class App extends Component {
         <nav>
           <div className="nav-wrapper">
             <a href="/" className="brand-logo left"><img className={styles.logo} src="/images/icon-192x192.png" width="48" height="48"/></a>
-
-            <ul id="nav-mobile" className="right">
-              <li><a href="#" onClick={this.openAbout}>About</a></li>
-            </ul>
+            <ul className={styles.center}><li><Clock /></li></ul>
+            <ul className="right"><li><a href="#" onClick={this.openAbout}>About</a></li></ul>
           </div>
         </nav>
         <Stops />

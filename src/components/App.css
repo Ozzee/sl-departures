@@ -17,3 +17,10 @@ body {
 .logo {
     margin-top: 3px;
 }
+
+.center {
+    left: 50%;
+    transform: translate(-50%);
+    position: absolute;
+    display: inline-block;
+}
