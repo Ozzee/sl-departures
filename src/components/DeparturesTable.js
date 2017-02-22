@@ -35,15 +35,19 @@ class DeparturesTable extends Component {
   }
 
   departures(departures, stop) {
-    return _.flatMap(stop.lines, (l)=>{
-      return _.filter(departures, (d) => {
-        return d.line === l.line && d.direction === l.direction
+    if (departures) {
+      return _.flatMap(stop.lines, (l)=>{
+        return _.filter(departures, (d) => {
+          return d.line === l.number && d.direction === l.direction
+        })
       })
-    })
+    } else {
+      return []
+    }
   }
 
   render() {
-    const departures = this.departures(this.props.departures, this.props.stop)
+    const departures = this.departures(this.props.departures, this.props.card)
     return (<table>
                     <thead>
                     <tr>
@@ -66,7 +70,7 @@ class DeparturesTable extends Component {
 }
 
 DeparturesTable.propTypes = {
-  stop: React.PropTypes.object,
+  card: React.PropTypes.object,
   departures: React.PropTypes.arrayOf(React.PropTypes.shape(
     {
       line: React.PropTypes.string, 

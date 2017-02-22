@@ -5,14 +5,14 @@ class Cards extends Component {
   render() {
     return (<div className="row">
             <div className="col s12 m6">
-              {this.props.stops.map((stop) => <Card key={stop.stopId} stop={stop} />)}
+              {this.props.cards.map((card) => <Card key={card} card={card} />)}
             </div>
       </div>)
   }
 }
 
 Cards.propTypes = {
-  stops: React.PropTypes.array
+  cards: React.PropTypes.array
 }
 
 export default Cards

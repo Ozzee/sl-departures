@@ -3,7 +3,7 @@ import Cards from '../components/Cards'
 
 const mapStateToProps = (state) => {
   return {
-    stops: state.cardsReducer.cards
+    cards: state.cards
   }
 }
 

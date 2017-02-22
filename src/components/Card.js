@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Departures from '../containers/departures'
+import Updated from '../containers/updated'
  
 class Card extends Component {
   render() {
     return (
             <div className="card">
                 <div className="card-content">
-                    <span className="card-title">{this.props.stop.name}</span>
-                    <Departures stop={this.props.stop} />
+                    <span className="card-title">{this.props.card.name}</span>
+                    <Updated stopId={this.props.card.stopId} />
+                    <Departures card={this.props.card} />
                 </div>
             </div>
     )
@@ -15,7 +17,7 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  stop: React.PropTypes.object
+  card: React.PropTypes.object
 }
 
 export default Card

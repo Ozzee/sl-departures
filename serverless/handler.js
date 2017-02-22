@@ -17,9 +17,11 @@ function getStop(stopId, callback) {
             logger.error(json.Message)
             callback(new Error('[500] Internal Server Error'))
           } else {
-            const data = {departures: json.ResponseData.Metros.map((stop) => {
-              return {line: stop.LineNumber, destination: stop.Destination, time: stop.DisplayTime, direction: stop.JourneyDirection}
-            })}
+            const data = {
+              time: json.ResponseData.LatestUpdate,
+              departures: json.ResponseData.Metros.map((stop) => {
+                return {line: stop.LineNumber, destination: stop.Destination, time: stop.DisplayTime, direction: stop.JourneyDirection}
+              })}
             
             callback(null, data)
           }
