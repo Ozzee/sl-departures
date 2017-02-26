@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux'
 import { RECEIVE_STOP_DATA } from '../actions'
 
+/**
+ * This file contains the reducesrs that will generate the new state based on
+ * actions they receive.
+ */
+
 const cards = () => {
   return [
     {

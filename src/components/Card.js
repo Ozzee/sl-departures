@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Departures from '../containers/departures'
 import Updated from '../containers/updated'
+
+/**
+ * This component is a card shown in the app.
+ */
  
 class Card extends Component {
   render() {

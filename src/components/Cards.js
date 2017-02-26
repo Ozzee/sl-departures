@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Card from './Card'
 
+/**
+ * This component is a wrapper for all the cards shown in the app
+ */
+
 class Cards extends Component {
   render() {
     return (<div className="row">

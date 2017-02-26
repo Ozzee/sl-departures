@@ -10,6 +10,10 @@ import { createStore, applyMiddleware } from 'redux'
 import departuresApp from './reducers'
 import App from './components/App'
 
+/**
+ * This is the starting point of the app
+ */
+
 /*global require module document DEV */
 
 /* Copy these files to the dist folder as is */

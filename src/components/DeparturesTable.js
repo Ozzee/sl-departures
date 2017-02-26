@@ -5,6 +5,10 @@ import _ from 'lodash'
 
 /*global setInterval clearInterval*/
 
+/**
+ * This component shows a table with the next departures for a chosen stop with
+ * certain lines.
+ */
 
 class DeparturesTable extends Component {
 
