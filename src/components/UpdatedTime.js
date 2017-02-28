@@ -7,12 +7,13 @@ import styles from './UpdatedTime.css'
 
 class UpdatedTime extends Component {
   render(){
-    return (<span className={styles.updatedTime} >{this.props.time}</span>)
+    return (<span className={styles.updatedTime} onClick={this.props.updateCard} >{this.props.time}</span>)
   }
 }
 
 UpdatedTime.propTypes = {
-  time: React.PropTypes.string
+  time: React.PropTypes.string,
+  updateCard: React.PropTypes.func
 }
 
 export default UpdatedTime

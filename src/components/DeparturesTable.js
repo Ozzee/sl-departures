@@ -3,8 +3,6 @@ import moment from 'moment'
 import styles from './DeparturesTable.css'
 import _ from 'lodash'
 
-/*global setInterval clearInterval*/
-
 /**
  * This component shows a table with the next departures for a chosen stop with
  * certain lines.
@@ -12,19 +10,8 @@ import _ from 'lodash'
 
 class DeparturesTable extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {currentTime: moment()}
-  }
-
   componentDidMount() {
-    this.timer = setInterval(() => this.setState({currentTime: moment()}), 1000)
-
-    this.props.updateDepartures('1234')
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer)
+    this.props.updateDepartures()
   }
 
   departing(timeString) {
@@ -52,24 +39,28 @@ class DeparturesTable extends Component {
 
   render() {
     const departures = this.departures(this.props.departures, this.props.card)
-    return (<table>
-                    <thead>
-                    <tr>
-                        <th data-field="line">Line</th>
-                        <th data-field="destination">Destination</th>
-                        <th data-field="departure">Departure</th>
-                    </tr>
-                    </thead>
+    if (this.props.updating) {
+      return (<span>loading</span>)
+    } else {
+      return (<table>
+                      <thead>
+                      <tr>
+                          <th data-field="line">Line</th>
+                          <th data-field="destination">Destination</th>
+                          <th data-field="departure">Departure</th>
+                      </tr>
+                      </thead>
 
-                    <tbody>
-                        { departures.map(departure => 
-                            <tr key={departure.time+departure.line+departure.destination}>
-                              <td>{departure.line}</td>
-                              <td>{departure.destination}</td>
-                              <td>{departure.time}</td>
-                            </tr> )}
-                    </tbody>
-                </table>)
+                      <tbody>
+                          { departures.map(departure => 
+                              <tr key={departure.time+departure.line+departure.destination}>
+                                <td>{departure.line}</td>
+                                <td>{departure.destination}</td>
+                                <td>{departure.time}</td>
+                              </tr> )}
+                      </tbody>
+                  </table>)
+    }
   }
 }
 
@@ -82,7 +73,8 @@ DeparturesTable.propTypes = {
       time: React.PropTypes.string,
       direction: React.PropTypes.number
     })),
-  updateDepartures: React.PropTypes.func
+  updateDepartures: React.PropTypes.func,
+  updating: React.PropTypes.bool
 }
 
 export default DeparturesTable

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_STOP_DATA } from '../actions'
+import { RECEIVE_STOP_DATA, START_UPDATING_STOP } from '../actions'
 
 /**
  * This file contains the reducesrs that will generate the new state based on
@@ -28,10 +28,20 @@ const schedules = (state, action) => {
     var a = {}
     a[action.stop] = {
       latestUpdate: action.data.time,
-      departures: action.data.departures
+      departures: action.data.departures,
+      updating: false
     }
     return a
-    
+
+  case START_UPDATING_STOP:
+    var b = Object.assign({}, state)
+    if (!b[action.stop]) {
+      b[action.stop] = {}
+    }
+    b[action.stop].updating = true
+
+    return b
+
   default:
     return state == undefined ? {schedules: []} : state
   }

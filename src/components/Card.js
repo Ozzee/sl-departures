@@ -21,7 +21,8 @@ class Card extends Component {
 }
 
 Card.propTypes = {
-  card: React.PropTypes.object
+  card: React.PropTypes.object,
+  updateCard: React.PropTypes.func
 }
 
 export default Card

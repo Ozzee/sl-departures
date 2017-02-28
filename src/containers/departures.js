@@ -12,11 +12,13 @@ const mapStateToProps = (state, ownProps) => {
   if (departures) {
     return {
       departures: departures.departures,
+      updating: departures.updating,
       card: ownProps.card
     }
   } else {
     return {
       departures: [],
+      updating: true,
       card: ownProps.card
     }
   }

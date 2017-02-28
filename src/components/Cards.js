@@ -9,14 +9,15 @@ class Cards extends Component {
   render() {
     return (<div className="row">
             <div className="col s12 m6">
-              {this.props.cards.map((card) => <Card key={card} card={card} />)}
+              {this.props.cards.map((card) => <Card key={card} card={card} updateCard={this.props.updateCard} />)}
             </div>
       </div>)
   }
 }
 
 Cards.propTypes = {
-  cards: React.PropTypes.array
+  cards: React.PropTypes.array,
+  updateCard: React.PropTypes.func
 }
 
 export default Cards

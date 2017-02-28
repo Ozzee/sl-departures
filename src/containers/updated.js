@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import UpdatedTime from '../components/UpdatedTime'
 import moment from 'moment'
+import { fetchStop } from '../actions'
 
 /**
  * This container component will pass the time of the latest updated
@@ -16,6 +17,14 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const Updated = connect(mapStateToProps)(UpdatedTime)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateCard: () => {
+      dispatch(fetchStop(ownProps.stopId))
+    }
+  }
+}
+
+const Updated = connect(mapStateToProps, mapDispatchToProps)(UpdatedTime)
 
 export default Updated
