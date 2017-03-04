@@ -4,3 +4,7 @@
     right: 1em;
     color: darkgrey;
 }
+
+.time {
+    vertical-align: top;
+}

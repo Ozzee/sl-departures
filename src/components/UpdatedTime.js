@@ -7,7 +7,10 @@ import styles from './UpdatedTime.css'
 
 class UpdatedTime extends Component {
   render(){
-    return (<span className={styles.updatedTime} onClick={this.props.updateCard} >{this.props.time}</span>)
+    return (<div className={styles.updatedTime} onClick={this.props.updateCard}>
+              <span className={styles.time}>{this.props.time} &nbsp;</span>
+              <i className="material-icons">cached</i>
+            </div>)
   }
 }
 
