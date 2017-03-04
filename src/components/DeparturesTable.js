@@ -40,7 +40,9 @@ class DeparturesTable extends Component {
   render() {
     const departures = this.departures(this.props.departures, this.props.card)
     if (this.props.updating) {
-      return (<span>loading</span>)
+      return (<div className="progress">
+                  <div className="indeterminate"></div>
+              </div>)
     } else {
       return (<table>
                       <thead>
