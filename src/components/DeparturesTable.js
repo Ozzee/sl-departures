@@ -8,6 +8,7 @@ import _ from 'lodash'
  * certain lines.
  */
 
+
 class DeparturesTable extends Component {
 
   componentDidMount() {
