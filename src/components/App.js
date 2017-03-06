@@ -3,6 +3,7 @@ import styles from './App.css'
 import Stops from '../containers/stops'
 import About from '../components/About'
 import Clock from '../components/Clock'
+import Add from '../components/Add'
 
 /*global document*/
 
@@ -25,6 +26,7 @@ class App extends Component {
         </nav>
         <Stops />
         <About />
+        <Add />
       </div>
     )
   }

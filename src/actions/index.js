@@ -1,5 +1,13 @@
 import fetch from 'isomorphic-fetch'
 import moment from 'moment'
+
+/**
+ * Actions.
+ * 
+ * These need to either return an action or a function that will at some point return an action.
+ */
+
+
 /*global API_ROOT */
 
 /* Add a SL public transit stop
@@ -46,5 +54,15 @@ export function checkData(timestamp, stopId) {
     if (updated.isBefore(limit)){
       dispatch(fetchStop(stopId))
     }
+  }
+}
+
+export const REMOVE_CARD = 'REMOVE_CARD'
+export function removeCard(id) {
+  return function(dispatch) {
+    dispatch({
+      type: REMOVE_CARD,
+      cardId: id
+    })
   }
 }

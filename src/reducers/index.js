@@ -1,22 +1,29 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_STOP_DATA, START_UPDATING_STOP } from '../actions'
+import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD } from '../actions'
 
 /**
  * This file contains the reducesrs that will generate the new state based on
  * actions they receive.
  */
 
-const cards = () => {
-  return [
-    {
-      name: 'Fruängen',
-      stopId: '9260',
-      lines: [{
-        number: '14',
-        direction: 1
-      }]
-    }
-  ]
+const cards = (state, action) => {
+  const initial = [{
+    name: 'Fruängen',
+    cardId: 1,
+    stopId: '9260',
+    lines: [{
+      number: '14',
+      direction: 1
+    }]
+  }]
+  
+
+  switch (action.type) {
+  case REMOVE_CARD:
+    return state.filter((card) => card.cardId !== action.cardId)
+  default:
+    return state == undefined ? initial : state
+  }
 }
 
 /*
