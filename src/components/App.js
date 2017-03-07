@@ -4,13 +4,14 @@ import Stops from '../containers/stops'
 import About from '../components/About'
 import Clock from '../components/Clock'
 import Add from '../components/Add'
-
+import ReactGA from 'react-ga'
 /*global document*/
 
 
 class App extends Component {
 
   openAbout() {
+    ReactGA.event({category: 'About', action: 'Open About'})
     document.getElementById('about').style = 'display: flex;'
   }
 

@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import moment from 'moment'
+import ReactGA from 'react-ga'
 
 /**
  * Actions.
@@ -49,6 +50,7 @@ export function fetchStop(stop) {
 
 export function checkData(timestamp, stopId) {
   return function(dispatch) {
+    ReactGA.event({category: 'Stops', action: 'Check Data'})
     const limit = moment().subtract(30, 'seconds') // 30s ago
     const updated = moment(timestamp)
     if (updated.isBefore(limit)){
@@ -60,6 +62,7 @@ export function checkData(timestamp, stopId) {
 export const REMOVE_CARD = 'REMOVE_CARD'
 export function removeCard(id) {
   return function(dispatch) {
+    ReactGA.event({category: 'Cards', action: 'Remove Card'})
     dispatch({
       type: REMOVE_CARD,
       cardId: id

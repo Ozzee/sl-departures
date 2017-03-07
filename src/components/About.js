@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import styles from './About.css'
+import ReactGA from 'react-ga'
 
 /*global document*/
 
 
 class About extends Component {
   closeAbout() {
+    ReactGA.event({category: 'About', action: 'Close About'})
     document.getElementById('about').style = ''
   }
 
