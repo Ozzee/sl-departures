@@ -11,16 +11,6 @@ import ReactGA from 'react-ga'
 
 /*global API_ROOT */
 
-/* Add a SL public transit stop
-export const ADD_STOP = 'ADD_STOP'
-function addStop(stop) {
-  return {
-    type: ADD_STOP,
-    stop
-  }
-}
-*/
-
 export const START_UPDATING_STOP = 'START_UPDATING_STOP'
 function startUpdatingStop(stop) {
   return {
@@ -56,6 +46,13 @@ export function checkData(timestamp, stopId) {
     if (updated.isBefore(limit)){
       dispatch(fetchStop(stopId))
     }
+  }
+}
+
+export const ADD_CARD = 'ADD_CARD'
+export function addCard(card) {
+  return function(dispatch) {
+    dispatch({type: ADD_CARD, card: card})
   }
 }
 

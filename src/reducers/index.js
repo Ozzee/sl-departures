@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD } from '../actions'
+import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD, ADD_CARD } from '../actions'
 
 /**
  * This file contains the reducesrs that will generate the new state based on
@@ -9,8 +9,8 @@ import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD } from '../actions'
 const cards = (state, action) => {
   const initial = [{
     name: 'Fruängen',
-    cardId: 1,
     stopId: '9260',
+    cardId: 0,
     lines: [{
       number: '14',
       direction: 1
@@ -21,6 +21,10 @@ const cards = (state, action) => {
   switch (action.type) {
   case REMOVE_CARD:
     return state.filter((card) => card.cardId !== action.cardId)
+  case ADD_CARD:
+    var newCard = Object.assign({}, action.card)
+    newCard.cardId = state.length
+    return state.concat([newCard]) //TODO: check if this actually mutates state...
   default:
     return state == undefined ? initial : state
   }
