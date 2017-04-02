@@ -39,4 +39,27 @@ functions:
               - X-Api-Key
               - X-Amz-Security-Token
             allowCredentials: false  
-    
+  
+  search:
+    handler: handler.search
+    environment: 
+      SL_REAL: ${env:SL_PLATS}
+    events:
+      - http:
+          path: search/{q}
+          method: get
+          integration: lambda
+          request:
+            parameters:
+              paths:
+                q: true
+          cors:
+            origins:
+              - ${env:SL_ORIGINS}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: false    

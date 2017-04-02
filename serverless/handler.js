@@ -6,11 +6,12 @@ const logger = require('bucker').createLogger()
 /*eslint-env node*/
 /*elint-global console */
 
-const apiKey = process.env.SL_REAL
+const apiKeyRealtime = process.env.SL_REAL
+const apiKeyPlats = process.env.SL_PLATS
 
 
 function getStop(stopId, callback) {
-  fetch('http://api.sl.se/api2/realtimedeparturesV4.json?key='+apiKey+'&timewindow=60&siteid=' + stopId)
+  fetch('http://api.sl.se/api2/realtimedeparturesV4.json?key='+apiKeyRealtime+'&timewindow=60&siteid=' + stopId)
         .then(response => response.json())
         .then(json => {
           if (json.StatusCode !== 0) {
@@ -29,6 +30,24 @@ function getStop(stopId, callback) {
         .catch((error) => logger.error(error))
 }
 
+function searchStops(q, callback) {
+  fetch('http://api.sl.se/api2/typeahead.json?key='+apiKeyPlats+'&searchstring='+q+'&stationsonly=true&maxresults=10')
+    .then(response => response.json())
+    .then(json => {
+      if(json.StatusCode !== 0){
+        logger.error(json.Message)
+        callback(new Error('[500] Internal Server Error'))
+      } else {
+        callback(null, json.ResponseData.map((stop) => {
+          return {
+            "name": stop.Name,
+            "stopId": stop.SiteId
+          }
+        }))
+      }
+    })
+}
+
 module.exports.stop = (event, context, callback) => {
   const stopId = parseInt(event.path.id)
   if (isNaN(stopId)) {
@@ -36,4 +55,8 @@ module.exports.stop = (event, context, callback) => {
   } else {
     getStop(stopId, callback)
   }
+}
+
+module.exports.search = (event, context, callback) => {
+  searchStops(event.path.q, callback)
 }
