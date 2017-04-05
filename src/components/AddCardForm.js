@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import StopSearch from './StopSearch'
 
 class AddCardForm extends Component {
 
   render() {
     return (<div>
-      <input type="text" placeholder="Stop name" />
+      <StopSearch />
       <button>Search</button>
       <div className="modal-footer">
         <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat" onClick={this.props.close} >Close</a>
