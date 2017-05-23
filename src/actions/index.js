@@ -52,6 +52,7 @@ export function checkData(timestamp, stopId) {
 export const ADD_CARD = 'ADD_CARD'
 export function addCard(card) {
   return function(dispatch) {
+    ReactGA.event({category: 'Cards', action: 'Add Card'})    
     dispatch({type: ADD_CARD, card: card})
   }
 }

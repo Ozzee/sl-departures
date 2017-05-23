@@ -8,7 +8,7 @@ import About from '../components/About'
 import Modal from '../components/Modal'
 import Clock from '../components/Clock'
 import AddButton from '../components/AddButton'
-import AddCardForm from './AddCardForm'
+import Add from '../containers/add'
 
 /*eslint-env browser*/
 
@@ -64,7 +64,7 @@ class App extends Component {
         </Modal>
         <AddButton openAdd={this.openAdd} />
         <Modal isOpen={this.state.addOpen} >
-          <AddCardForm close={this.closeAdd} />
+          <Add close={this.closeAdd} />
         </Modal>
       </div>
     )

@@ -1,26 +1,25 @@
 import { connect } from 'react-redux'
-import AddButton from '../components/AddButton'
+import AddCardForm from '../components/AddCardForm'
 import { addCard } from '../actions/'
 
-const card = {
-  name: 'Fruängen',
-  cardId: 1,
-  stopId: '9260',
-  lines: [{
-    number: '14',
-    direction: 1
-  }]
-}
 
 const mapStateToProps = (state) => state
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    addCard: () => {
+    addCard: (card) => {
       dispatch(addCard(card))
     }
   }
 }
 
-const Add = connect(mapStateToProps, mapDispatchToProps)(AddButton)
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  return Object.assign({}, ownProps, {
+    addCard: dispatchProps.addCard,
+    close: ownProps.close
+  })
+}
+
+const Add = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AddCardForm)
 
 export default Add

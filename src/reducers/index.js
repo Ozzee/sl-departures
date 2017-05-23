@@ -23,7 +23,7 @@ const cards = (state, action) => {
     return state.filter((card) => card.cardId !== action.cardId)
   case ADD_CARD:
     var newCard = Object.assign({}, action.card)
-    newCard.cardId = state.length
+    newCard.cardId = state[state.length-1].cardId + 1
     return state.concat([newCard]) //TODO: check if this actually mutates state...
   default:
     return state == undefined ? initial : state
@@ -36,25 +36,24 @@ const cards = (state, action) => {
 const schedules = (state, action) => {
   switch (action.type) {
   case RECEIVE_STOP_DATA:
-    var a = {}
-    a[action.stop] = {
+    var newState = Object.assign({}, state)
+    newState[action.stop] = {
       latestUpdate: action.data.time,
       departures: action.data.departures,
       updating: false
     }
-    return a
+    return newState
 
   case START_UPDATING_STOP:
-    var b = Object.assign({}, state)
-    if (!b[action.stop]) {
-      b[action.stop] = {}
+    var newState2 = Object.assign({}, state)
+    if (!newState2[action.stop]) {
+      newState2[action.stop] = {}
     }
-    b[action.stop].updating = true
-
-    return b
+    newState2[action.stop].updating = true
+    return newState2
 
   default:
-    return state == undefined ? {schedules: []} : state
+    return state == undefined ? {} : state
   }
 }
 

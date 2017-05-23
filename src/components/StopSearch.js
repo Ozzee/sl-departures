@@ -18,6 +18,7 @@ class StopSearch extends Component {
     this.onChange = this.onChange.bind(this)
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this)
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this)
+    this.onSuggestionSelected = this.onSuggestionSelected.bind(this)
   }
 
   onChange(event, { newValue }) {
@@ -37,6 +38,10 @@ class StopSearch extends Component {
     this.setState({
       suggestions: []
     })
+  }
+
+  onSuggestionSelected(event, {suggestion}) {
+    this.props.selectStop(suggestion.stopId)
   }
 
 
@@ -59,7 +64,7 @@ class StopSearch extends Component {
     const { value, suggestions } = this.state
 
     const inputProps = {
-      placeholder: 'Autocomplete',
+      placeholder: 'Search Stop',
       value,
       onChange: this.onChange
     }
@@ -68,12 +73,17 @@ class StopSearch extends Component {
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        onSuggestionSelected={this.onSuggestionSelected}
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={this.renderSuggestion}
         shouldRenderSuggestions={this.shouldRenderSuggestions}
         inputProps={inputProps}
       />)
   }
+}
+
+StopSearch.propTypes = {
+  selectStop: React.PropTypes.func
 }
 
 export default StopSearch
