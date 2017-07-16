@@ -6,7 +6,7 @@ import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD, ADD_CARD } from '.
  * actions they receive.
  */
 
-const cards = (state, action) => {
+export const cards = (state, action) => {
   const initial = [{
     name: 'Fruängen',
     stopId: '9260',
@@ -16,7 +16,6 @@ const cards = (state, action) => {
       direction: 1
     }]
   }]
-  
 
   switch (action.type) {
   case REMOVE_CARD:
@@ -33,7 +32,7 @@ const cards = (state, action) => {
 /*
  * Filter new stop information and add them to the new state
  */
-const schedules = (state, action) => {
+export const schedules = (state, action) => {
   switch (action.type) {
   case RECEIVE_STOP_DATA:
     var newState = Object.assign({}, state)
@@ -56,10 +55,3 @@ const schedules = (state, action) => {
     return state == undefined ? {} : state
   }
 }
-
-const departuresApp = combineReducers({
-  cards,
-  schedules
-})
-
-export default departuresApp
