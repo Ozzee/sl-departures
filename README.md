@@ -1,6 +1,6 @@
 # SL Departures
 
-A simple progressive web app for showing the next departures of transit stops in the Stockholm reginal transit network.
+A simple progressive web app for showing the next departures of transit stops in the Stockholm regional transit network.
 
 To get any real data you need to register and apply for an API key at: https://www.trafiklab.se/api
 
@@ -8,7 +8,7 @@ To get any real data you need to register and apply for an API key at: https://w
 
 * Install npm dependencies
   * and `webpack` and `eslint` globally
-* Start develeopment server: `npm start`
+* Start development server: `npm start`
 
 ## Environment
 
