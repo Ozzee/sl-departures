@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import { RECEIVE_STOP_DATA, START_UPDATING_STOP, REMOVE_CARD, ADD_CARD } from '../actions'
 
 /**
