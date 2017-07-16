@@ -9,7 +9,7 @@ class Cards extends Component {
   render() {
     return (<div className="row">
             <div className="col s12 m6">
-              {this.props.cards.map((card) => <Card key={card} card={card} updateCard={this.props.updateCard} />)}
+              {this.props.cards.map((card) => <Card key={card.cardId} card={card} updateCard={this.props.updateCard} />)}
             </div>
       </div>)
   }

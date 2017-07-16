@@ -1,16 +1,15 @@
 import fetch from 'isomorphic-fetch'
 import moment from 'moment'
-/*global API_ROOT */
+import ReactGA from 'react-ga'
 
-/* Add a SL public transit stop
-export const ADD_STOP = 'ADD_STOP'
-function addStop(stop) {
-  return {
-    type: ADD_STOP,
-    stop
-  }
-}
-*/
+/**
+ * Actions.
+ * 
+ * These need to either return an action or a function that will at some point return an action.
+ */
+
+
+/*global API_ROOT */
 
 export const START_UPDATING_STOP = 'START_UPDATING_STOP'
 function startUpdatingStop(stop) {
@@ -41,10 +40,30 @@ export function fetchStop(stop) {
 
 export function checkData(timestamp, stopId) {
   return function(dispatch) {
+    ReactGA.event({category: 'Stops', action: 'Check Data'})
     const limit = moment().subtract(30, 'seconds') // 30s ago
     const updated = moment(timestamp)
     if (updated.isBefore(limit)){
       dispatch(fetchStop(stopId))
     }
+  }
+}
+
+export const ADD_CARD = 'ADD_CARD'
+export function addCard(card) {
+  return function(dispatch) {
+    ReactGA.event({category: 'Cards', action: 'Add Card'})    
+    dispatch({type: ADD_CARD, card: card})
+  }
+}
+
+export const REMOVE_CARD = 'REMOVE_CARD'
+export function removeCard(id) {
+  return function(dispatch) {
+    ReactGA.event({category: 'Cards', action: 'Remove Card'})
+    dispatch({
+      type: REMOVE_CARD,
+      cardId: id
+    })
   }
 }

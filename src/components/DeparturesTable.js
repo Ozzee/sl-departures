@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 import styles from './DeparturesTable.css'
-import _ from 'lodash'
 
 /**
  * This component shows a table with the next departures for a chosen stop with
@@ -26,16 +25,8 @@ class DeparturesTable extends Component {
     }
   }
 
-  departures(departures, stop) {
-    if (departures) {
-      return _.flatMap(stop.lines, (l)=>{
-        return _.filter(departures, (d) => {
-          return d.line === l.number && d.direction === l.direction
-        })
-      })
-    } else {
-      return []
-    }
+  departures(departures) {
+    return departures || [] // Todo: implement filtering by line
   }
 
   render() {
