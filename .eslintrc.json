@@ -16,6 +16,7 @@
     },
     "rules": {
         "indent": ["error", 2],
-        "semi": ["error", "never"]
+        "semi": ["error", "never"],
+        "eol-last": ["warn", "always"]
     }
 }
